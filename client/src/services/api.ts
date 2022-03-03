@@ -1,7 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { AuthResponse } from '../models/response/authResponse'
-// import { store } from '../index'
-// import { IUser } from '../models/IUser'
 
 export const API_URL = `http://localhost:5000/api`
 
@@ -38,7 +36,7 @@ $api.interceptors.response.use(
         localStorage.setItem('token', response.data.accessToken)
         return $api.request(originalRequest)
       } catch (e) {
-        console.log('НЕ АВТОРИЗОВАН')
+        // console.log('НЕ АВТОРИЗОВАН')
       }
     }
     throw error

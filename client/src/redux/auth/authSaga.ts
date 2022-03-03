@@ -23,13 +23,10 @@ export function* registration({
   const { email, password } = payload
   // type RegistrationResponse = SagaReturnType<typeof AuthService.registration>
   try {
-    console.log(email)
     const response: any = yield call(AuthService.registration, email, password)
-    console.log(response)
     yield put(registrationSuccess(response?.data?.user))
     localStorage.setItem('token', response?.data?.accessToken)
   } catch (error: any) {
-    console.log(error.response?.data?.message)
     yield put(registrationFail(error.response?.data?.message))
   }
 }
@@ -43,13 +40,10 @@ export function* login({
   const { email, password } = payload
   // type RegistrationResponse = SagaReturnType<typeof AuthService.registration>
   try {
-    console.log(email)
     const response: any = yield call(AuthService.login, email, password)
-    console.log(response)
     yield put(loginSuccess(response?.data?.user))
     localStorage.setItem('token', response?.data?.accessToken)
   } catch (error: any) {
-    console.log(error.response?.data?.message)
     yield put(loginFail(error.response?.data?.message))
   }
 }
@@ -57,12 +51,10 @@ export function* login({
 export function* logout(): Generator {
   // type RegistrationResponse = SagaReturnType<typeof AuthService.registration>
   try {
-    const response: any = yield call(AuthService.logout)
-    console.log(response)
+    yield call(AuthService.logout)
     yield put(logOutSuccess())
     localStorage.removeItem('token')
   } catch (error: any) {
-    console.log(error.response?.data?.message)
     yield put(logOutFail(error.response?.data?.message))
   }
 }
@@ -71,11 +63,9 @@ export function* checkAuth(): Generator {
   // type RegistrationResponse = SagaReturnType<typeof AuthService.registration>
   try {
     const response: any = yield call(AuthService.checkAuth)
-    console.log(response)
     yield put(checkAuthSuccess(response?.data?.user))
     localStorage.setItem('token', response?.data?.accessToken)
   } catch (error: any) {
-    console.log(error.response?.data?.message)
     yield put(checkAuthFail(error.response?.data?.message))
   }
 }
