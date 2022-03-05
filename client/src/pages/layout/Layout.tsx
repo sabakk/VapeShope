@@ -1,25 +1,19 @@
-// import React, { useEffect } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { AppState } from '../../redux/rootReducer'
 import { UserState } from '../../redux/auth/authReducer'
-// import { checkAuthRequest } from '../../redux/auth/authAction'
+import styles from './layout.module.scss'
 
 export default function Registration() {
   const { user, isAuth }: UserState = useSelector(
     (state: AppState) => state.auth
   )
-
-  //   const dispatch = useDispatch()
-  //   useEffect(() => {
-  //     if (localStorage.getItem('token')) {
-  //       dispatch(checkAuthRequest())
-  //     }
-  //   }, [dispatch])
+  // const pr = process.env.PORT
+  // console.log(pr)
   return (
-    <div>
-      <nav>
-        <Link to="/">Home</Link> |<Link to="registration">Registration</Link> |
+    <div className={styles.layout}>
+      <nav className={styles.navigation}>
+        <Link to="/">Home</Link> |<Link to="signup">Registration</Link> |
         <Link to="login">Login</Link>
       </nav>
       <h1>
