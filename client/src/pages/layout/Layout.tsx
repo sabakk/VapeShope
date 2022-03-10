@@ -14,7 +14,8 @@ export default function Registration() {
     <div className={styles.layout}>
       <nav className={styles.navigation}>
         <Link to="/">Home</Link> |<Link to="signup">Registration</Link> |
-        <Link to="login">Login</Link>
+        <Link to="login">Login</Link>|
+        <Link to="createproduct">create Product</Link>
       </nav>
       <h1>
         Hello {isAuth ? user?.email : 'Guest'}!!!!!!!!

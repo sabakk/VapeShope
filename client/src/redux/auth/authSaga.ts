@@ -12,7 +12,7 @@ import {
   checkAuthSuccess,
 } from './authAction'
 import { IAuth } from '../../models/IUser'
-import AuthService from '../../services/authService'
+import AuthService from '../../api/authService'
 
 export function* registration({
   payload,
