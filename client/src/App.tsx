@@ -7,6 +7,7 @@ import Layout from './pages/layout/Layout'
 import { Signup } from './pages/auth/Signup'
 import { Login } from './pages/auth/Login'
 import { CreateProduct } from './pages/product/productForm'
+import Products from './pages/product/Products'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
           <Route path="createproduct" element={<CreateProduct />} />
+          <Route path="products" element={<Products />} />
         </Route>
       </Routes>
     </BrowserRouter>
