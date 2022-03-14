@@ -20,10 +20,10 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="signup" element={<Signup />} />
-          <Route path="login" element={<Login />} />
-          <Route path="createproduct" element={<CreateProduct />} />
-          <Route path="products" element={<Products />} />
+          <Route path="Registration" element={<Signup />} />
+          <Route path="Login" element={<Login />} />
+          <Route path="Createproduct" element={<CreateProduct />} />
+          <Route path="Products" element={<Products />} />
         </Route>
       </Routes>
     </BrowserRouter>
