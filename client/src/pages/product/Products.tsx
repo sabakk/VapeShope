@@ -2,11 +2,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../../redux/rootReducer'
 import { ProductState } from '../../redux/product/productReducer'
 import { useEffect } from 'react'
-import {
-  allProductRequest,
-  deleteProductRequest,
-} from '../../redux/product/productAction'
-
+import { allProductRequest } from '../../redux/product/productAction'
+import { сartAddItem } from '../../redux/cart/cartAction'
+import { ProductResponce } from '../../models/response/productResponce'
 export default function Products() {
   const { products }: ProductState = useSelector(
     (state: AppState) => state.products
@@ -17,7 +15,8 @@ export default function Products() {
     dispatch(allProductRequest())
   }, [dispatch])
 
-  const deleteByID = (id: string) => dispatch(deleteProductRequest(id))
+  // const deleteByID = (id: string) => dispatch(deleteProductRequest(id))
+  const addToCart = (product: ProductResponce) => dispatch(сartAddItem(product))
 
   return (
     <div>
@@ -25,8 +24,8 @@ export default function Products() {
       {products.map((product) => (
         <div
           role="button"
-          onClick={() => deleteByID(product._id)}
-          onKeyPress={() => deleteByID(product._id)}
+          onClick={() => addToCart(product)}
+          onKeyPress={() => addToCart(product)}
           key={product._id}
           tabIndex={0}
         >

@@ -1,4 +1,10 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppState } from '../../redux/rootReducer'
+
+import { CartState } from '../../redux/cart/cartReducer'
+import { cartToggle } from '../../redux/cart/cartAction'
+
 import { styled, useTheme, alpha } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Drawer from '@mui/material/Drawer'
@@ -19,6 +25,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import InputBase from '@mui/material/InputBase'
 import Badge from '@mui/material/Badge'
 
+import { ShoppingCart } from '../cart/ShoppingCart'
 // import { Hidden } from '@mui/material'
 import { Link, NavLink } from 'react-router-dom'
 
@@ -105,6 +112,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }))
 
 export default function Navigatin() {
+  const { cartItems }: CartState = useSelector((state: AppState) => state.cart)
+  const dispatch = useDispatch()
   const theme = useTheme()
   const [open, setOpen] = useState(false)
 
@@ -201,8 +210,9 @@ export default function Navigatin() {
               size="large"
               aria-label="show 4 new mails"
               color="inherit"
+              onClick={() => dispatch(cartToggle())}
             >
-              <Badge badgeContent={4} color="error">
+              <Badge badgeContent={cartItems.length} color="error">
                 <ShoppingCartIcon />
               </Badge>
             </IconButton>
@@ -218,6 +228,7 @@ export default function Navigatin() {
             >
               <AccountCircle />
             </IconButton>
+            <ShoppingCart />
           </Box>
         </Toolbar>
       </AppBar>
