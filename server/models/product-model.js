@@ -18,6 +18,9 @@ const ProductSchema = new Schema({
     type: Number,
     required: true,
   },
+  picture: {
+    type: Object,
+  },
 
   // date: {
   //   type: Date,

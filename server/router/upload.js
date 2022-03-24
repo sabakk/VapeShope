@@ -6,8 +6,11 @@ const authMiddleware = require("../middlewares/auth-middleware");
 
 router.post("/", upload.single("image"), async (req, res) => {
   try {
+    console.log(req.body);
+    console.log(req.file);
     const result = await cloudinary.uploader.upload(req.file.path);
     console.log(result);
+    return res.json(result);
   } catch (err) {
     console.log(err);
   }

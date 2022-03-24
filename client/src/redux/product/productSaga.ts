@@ -10,8 +10,14 @@ import {
   allProductFail,
 } from './productAction'
 import ProductService from '../../api/productService'
-import { IProduct } from '../../models/IProduct'
+// import { IProduct } from '../../models/IProduct'
 // import { ProductResponce } from '../../models/response/productResponce'
+
+export interface IProduct {
+  text: string
+  price: number
+  image: any
+}
 
 export function* createProduct({
   payload,
@@ -19,12 +25,29 @@ export function* createProduct({
   payload: IProduct
   type: string
 }): Generator {
-  const { text, price } = payload
+  const { text, price, image } = payload
   // type RegistrationResponse = SagaReturnType<typeof AuthService.registration>
   try {
-    const response: any = yield call(ProductService.create, text, price)
+    console.log(image)
+    const FormFied = new FormData()
+    FormFied.append('image', image[0])
+    console.log(FormFied)
+
+    const { data: picture }: any = yield call(
+      ProductService.createImage,
+      FormFied
+    )
+
+    const response: any = yield call(
+      ProductService.create,
+      text,
+      price,
+      picture
+    )
     yield put(createProductSuccess(response?.data))
   } catch (error: any) {
+    console.log(error)
+
     yield put(createProductFail(error.response?.data?.message))
   }
 }

@@ -29,6 +29,7 @@ export default function Products() {
           key={product._id}
           tabIndex={0}
         >
+          {<img width={50} src={product?.picture?.secure_url} alt="vape"></img>}
           {product.text}
         </div>
       ))}

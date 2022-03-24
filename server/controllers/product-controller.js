@@ -6,13 +6,17 @@ const ProductModel = require("../models/product-model");
 class ProductController {
   async addProduct(req, res, next) {
     try {
-      console.log(req.body);
+      console.log(req.body.picture.secure_url);
       const newProduct = new ProductModel({
         brand: req.body.brand,
         text: req.body.text,
         volume: req.body.volume,
         nicotine: req.body.nicotine,
         price: req.body.price,
+        picture: {
+          secure_url: req.body.picture.secure_url,
+          public_id: req.body.picture.public_id,
+        },
       });
 
       const productData = await newProduct.save();

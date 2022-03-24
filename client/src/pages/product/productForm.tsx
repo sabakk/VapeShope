@@ -18,6 +18,7 @@ import styles from './style.module.scss'
 interface IProductForm {
   text: string
   price: number
+  image: any | null
 }
 
 export const CreateProduct: React.FC = () => {
@@ -72,6 +73,20 @@ export const CreateProduct: React.FC = () => {
               className={styles.authform__input}
               error={!!errors?.price?.message}
               helperText={errors?.price?.message}
+            />
+          )}
+        />
+        <Controller
+          name="image"
+          control={control}
+          defaultValue=""
+          render={({ field }) => (
+            <input
+              type="file"
+              onChange={(e) => {
+                field.onChange(e.target.files)
+              }}
+              multiple
             />
           )}
         />
