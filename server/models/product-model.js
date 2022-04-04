@@ -21,6 +21,7 @@ const ProductSchema = new Schema({
   picture: {
     type: Object,
   },
+  category: { type: Schema.Types.ObjectId, ref: "Category" },
 
   // date: {
   //   type: Date,

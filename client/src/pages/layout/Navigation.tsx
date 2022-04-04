@@ -144,11 +144,13 @@ export default function Navigatin() {
       //   onKeyDown={toggleDrawer(side, false)}
     >
       <ul>
-        {['Createproduct', 'Products', 'Registration', 'Login'].map((text) => (
-          <li key={text}>
-            <NavLink to={text}>{text}</NavLink>
-          </li>
-        ))}
+        {['Createproduct', 'Products', 'Registration', 'Login', 'Order'].map(
+          (text) => (
+            <li key={text}>
+              <NavLink to={text}>{text}</NavLink>
+            </li>
+          )
+        )}
       </ul>
     </div>
   )

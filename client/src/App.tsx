@@ -8,6 +8,7 @@ import { Signup } from './pages/auth/Signup'
 import { Login } from './pages/auth/Login'
 import { CreateProduct } from './pages/product/productForm'
 import Products from './pages/product/Products'
+import { OrderForm } from './pages/order/OrderForm'
 
 export default function App() {
   const dispatch = useDispatch()
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="Login" element={<Login />} />
           <Route path="Createproduct" element={<CreateProduct />} />
           <Route path="Products" element={<Products />} />
+          <Route path="Order" element={<OrderForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

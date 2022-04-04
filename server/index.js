@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const usereRouter = require("./router/user");
 const uploadRouter = require("./router/upload");
+const categoryRouter = require("./router/category");
 const productRouter = require("./router/product");
 
 const errorMiddleware = require("./middlewares/error-middleware");
@@ -24,6 +25,7 @@ app.use(
 
 app.use("/api/auth", usereRouter);
 app.use("/api/upload", uploadRouter);
+app.use("/api/category", categoryRouter);
 app.use("/api/product", productRouter);
 app.use(errorMiddleware);
 
